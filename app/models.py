@@ -1,3 +1,4 @@
+from . import db
 class Category:
     '''
     # Category class to define category Objects
@@ -16,3 +17,11 @@ class Category:
 
     #     Category.all_categories.append()
     #     return categories
+
+class User(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer,primary_key = True)
+    username = db.Column(db.String(255))
+
+    def __repr__(self):
+        return f'User {self.username}'
