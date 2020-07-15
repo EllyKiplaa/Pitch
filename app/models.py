@@ -7,7 +7,7 @@ class User(db.Model):
     username = db.Column(db.String(255))
     email =db.Column(db.String(255))
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
-    
+    pass_secure = db.Column(db.String(255))
    
 
     def __repr__(self):
