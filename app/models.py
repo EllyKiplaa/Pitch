@@ -2,6 +2,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from . import db
 from flask_login import UserMixin
 from . import login_manager
+from datetime import datetime
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -33,20 +34,61 @@ class User(UserMixin,db.Model):
 def __repr__(self):
     return f'User {self.username}'
 
+class Category(db.Model):
+    __tablename__ = 'categories'
+
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(255))
+    pitch = db.relationship('Pitch', backref='parent_category', lazy='dynamic')
+
+    def __repr__(self):
+        return f'Category {self.name}'
+
 class Pitch(db.Model):
     __tablename__ = 'pitches'
 
-    id = db.Column(db.Integer,primary_key = True)
-    title = db.Column(db.String(255))
-    content = db.Column(db.String)
-    user = db.relationship('User',backref = 'pitch',lazy="dynamic")
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, nullable=False)
+    user_id = db.Column(db.String, nullable=False)
+    pitch = db.Column(db.String, nullable=False)
+    comment = db.relationship('Comment', backref='pitch', lazy='dynamic')
+    category = db.Column(db.String, nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
-    
 
-    
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
     def __repr__(self):
-        return f'User {self.name}'
+        return f"Pitch Title: {self.title}"
 
-     
+    
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    pitches_id = db.Column(db.Integer, db.ForeignKey('pitches.id'), nullable=False)
+    comment = db.Column(db.Text())
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls, pitch_id):
+        comments = Comment.query.filter_by(pitches_id=pitches_id).all()
+        return comments
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return f'Comments: {self.comment}'
+
