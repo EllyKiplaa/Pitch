@@ -39,7 +39,18 @@ class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(255))
+    description = db.Column(db.String(350))
     pitch = db.relationship('Pitch', backref='parent_category', lazy='dynamic')
+
+    def save_category(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_categories(     cls):
+        categories = Category.query.all()
+        return categories
+
 
     def __repr__(self):
         return f'Category {self.name}'
@@ -51,8 +62,8 @@ class Pitch(db.Model):
     title = db.Column(db.String, nullable=False)
     user_id = db.Column(db.String, nullable=False)
     pitch = db.Column(db.String, nullable=False)
-    comment = db.relationship('Comment', backref='pitch', lazy='dynamic')
-    category = db.Column(db.String, nullable=False)
+    # comment = db.relationship('Comment', backref='pitch', lazy='dynamic')
+    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
 
