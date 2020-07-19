@@ -1,0 +1,39 @@
+{% include 'navbar.html'%}
+
+{% import 'bootstrap/wtf.html' as wtf %}
+{% extends 'bootstrap/base.html' %}
+{% import 'macros.html' as macro %}
+
+{% block content %}
+
+
+        
+        
+<div class="row">
+                  
+    <h4><a>{{pitch.title}}</a></h4>
+        <h5 class="">{{pitch.description}}.</h5>
+        <div class="container">
+            <div class="row">
+                <div class=">
+                    {{wtf.quick_form(form)}}
+                </div>
+            </div>
+        </div>
+                        
+<hr>
+<div class="container">
+    <div class="col-md-12">
+        <h4 style="color: blue; text-align: center;text-underline-position: below">Comments</h4>
+    {{ macro.displayComment(comment) }}
+
+        </div>
+                 
+        </div>
+        
+</div>
+
+
+
+	
+{% endblock %}

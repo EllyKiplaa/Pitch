@@ -8,6 +8,13 @@
     </div>
      {% for pitch in pitches %}
      
-
+<a href="#">
+         <div class="list-item">
+                <p>{{pitch.id}}</p>
+            </div>
+            <h3>{{ pitch.description }}</h3>
+            <h5> Pitched by {{user.username}}.</h5>
+        </a>
 {% endblock %}
 
+ 

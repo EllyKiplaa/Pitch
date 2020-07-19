@@ -1,43 +1,33 @@
 {% extends 'base.html'%}
-        {% import 'macros.html' as macro%} 
-        <meta charset="utf-8">
-        {% if title %}  
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Pitch your idea  </title>
-        {% endif %}
-        <!-- Styles block -->
+{% import 'macros.html' as macro%}
+{% import 'bootstrap/wtf.html' as wtf %}
+
 
 {% block styles%}
-    {{ super() }}
+    {{ super() }} <!--super() function tells Jinja not to override any code that is defined in the block-->
     <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock %}
 
+{% block content %}
+<br>
+    <div class="row"> 
+        <div class="container-fluid" id="block-text">
+        <div class="col">
+        <p style="font-size: 20px; text-align:center;">In life you only have 60 seconds to impress someone. One minute to make or break you. How do we make sure that you use your one minute to actually say something meaningful ? </strong> </p>
+        </div>
+    </div>
+</div>
 
-  <body>
-     <!-- Content block -->
-  {% block content %}
-    <div class="container-fruid">
-      <h2 style="color:blue;text-align: center">Pitch Categories</h2>
-      <hr>
-      <ul class="nav nav-pills nav-justified nav-fill" role="tablist">
+<hr>
+
+<div class="container-fluid">
+ 
+    <h3 class="add-category"><a class="btn btn-primary" href="/add/category" style="background-color:blue; float:right;">ADD CATEGORY</a></h3>   
+    <h2 style="text-align:center;">PITCH CATEGORIES </strong></h2>
+    <strong style="font-size: 20px;">{{ macro.displayCategoryList(category) }} </strong>
     
-        <li class="nav-item">
-          <a class="nav-link active btn-btn-danger" data-toggle="tab" href="#products">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#movies">Movies</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#animals">Animal</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#quotes">Quotes</a>
-        </li>
-  
-      </ul>
+   
+</div>
 
-{% endblock%}
 
-    </body>
-</html>
+{% endblock  %}
