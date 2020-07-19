@@ -103,7 +103,9 @@ class Comment(db.Model):
         return f'Comments: {self.comment}'
 
 class Votes(db.Model):
-    '''class to model votes '''
+    '''
+    class to model votes 
+    '''
     __tablename__='votes'
 
     id = db.Column(db. Integer, primary_key=True)
