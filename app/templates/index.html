@@ -6,6 +6,7 @@
 {% block styles%}
     {{ super() }} <!--super() function tells Jinja not to override any code that is defined in the block-->
     <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}

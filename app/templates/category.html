@@ -3,7 +3,8 @@
 <!-- content block -->
 {% block content %}
   <div class=" col-md-10 col-md-offset-1 col-sm-12">
-       <a class="btn btn-primary text-center text-danger " href={{url_for('main.new_pitch',id=category.id)}}"> Add A pitch</a>
+   
+       <a class="btn btn-primary text-center text-danger " href="/category/new-pitch/{{category.id}}"> Post a Pitch</a>
        <hr>
   </div>
   <div class=" col-md-10 col-md-offset-1 col-sm-12">
@@ -22,7 +23,7 @@
       </div>
   {%else%}
         <div class="">
-          <h4 style="padding:20%; text-align:center; font-size:50px">No PITCHES HERE!</h4>
+          <h4 style="padding:20%; text-align:center; font-size:50px">NO PITCHES HERE!</h4>
         </div>
   {% endif %}
 
