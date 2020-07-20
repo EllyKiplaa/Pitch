@@ -8,6 +8,11 @@
 {% block content %}
 <div class="container" style="text-align:center">
     <h3>{{category.name}} Pitch</h3>
+     <div class=" col-md-10 col-md-offset-1 col-sm-12">
+   
+       <a class="btn btn-primary text-center text-danger " href="/category/new-pitch/{{category.id}}"> Post a Pitch</a>
+       <hr>
+  </div>
   <div class="well">
     <hr>
     {{wtf.quick_form(pitch_form)}}
