@@ -1,16 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
 {% import 'bootstrap/wtf.html' as wtf %}
  {%block styles%}
   {{ super() }}
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
 {%endblock%}
 
 {% block content %}
 <div class="container" style="text-align:center">
-    <h3>{{category.name}} Pitch</h3>
      <div class=" col-md-10 col-md-offset-1 col-sm-12">
-   
-       <a class="btn btn-primary text-center text-danger " href="/category/new-pitch/{{category.id}}"> Post a Pitch</a>
        <hr>
   </div>
   <div class="well">

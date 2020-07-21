@@ -1,42 +1,37 @@
 {% macro displayCategoryList(category_list) %}
 <div class="container-fluid">
-<div class="row">
-	{% if category_list %}
+  <div class="row">
+	 {% if category_list %}
 		{% for category in category_list %}
 		<div class="col">
 			<div class="card-body">	
 				<div class="container">
-				<div class="col-md-6">
-			<div class="thumbnail text-center">
-                <a href="{{url_for('main.category',id=category.id)}}"><p>{{category.name}}</p></a>
-          </div>
-		</div>
-			</div>
-	 	 </div>
+				    <div class="col-md-6">
+			            <div class="thumbnail text-center">
+                           <a href="{{url_for('main.category',id=category.id)}}"><p>{{category.name}}</p></a>
+                      </div>
+		           </div>
+			  </div>
+	 	   </div>
 
 		</div>
 		{% endfor %}
-	{% endif %}
+		{% endif %}
+	</div>
 </div>
 
 {% endmacro %}
 
-
 {% macro displayPitches(pitch_list) %}
 <ul>
-<div class="container-fluid">
+    <div class="container-fluid">
 			{% for pitches in pitch_list %}
 				<div class="row text-center">
-						<a><p style="color: brown">{{ comment.description }}</p></a>
-						  <p>{{pitches.name|upper}}</p></a>
-						<h3>{{pitches.content}}</h3>
+						<a><p>{{ comment.description }}</p></a>
+						<h3>{{pitches.pitch}}</h3>
 				</div>
 			{% endfor %}
 	
-
-	</ul>
-	
 	</div>		
-
-
+</ul>
 {% endmacro %}

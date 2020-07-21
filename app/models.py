@@ -66,9 +66,15 @@ class Pitch(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
 
-    def save(self):
+    def save_pitch(self):
         db.session.add(self)
         db.session.commit()
+
+    @classmethod
+    def get_pitches(cls, pitch_id):
+        pitches= Pitch.query.filter_by(pitches_id=pitches_id).all()
+        return pitches
+
 
     def delete(self):
         db.session.delete(self)

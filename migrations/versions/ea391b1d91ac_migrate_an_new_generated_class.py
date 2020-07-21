@@ -1,8 +1,8 @@
-"""Initial Migration
+"""Migrate an new generated class
 
-Revision ID: 6e6938a83921
-Revises: f026352c3711
-Create Date: 2020-07-20 02:44:26.685701
+Revision ID: ea391b1d91ac
+Revises: 
+Create Date: 2020-07-21 11:11:49.143916
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '6e6938a83921'
-down_revision = 'f026352c3711'
+revision = 'ea391b1d91ac'
+down_revision = None
 branch_labels = None
 depends_on = None
 

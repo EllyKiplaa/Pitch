@@ -1,4 +1,4 @@
-  <div class="navbar navbar-inverse" role="navigation">
+  <div class="navbar navbar-light bg-success" " role="navigation">
         <div class="container">
         <div class="text"></div>
             <div class="navbar-header">
@@ -17,7 +17,7 @@
             <!-- Default form login -->
                <ul class="nav navbar-nav navbar-right">
                   {% if current_user.is_authenticated %}
-                  <li style="color:white;padding:15px;">{{current_user.username}}</li>
+                  <li style="color:blue;padding:15px;">{{current_user.username}}</li>
                   <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
                   {% else %}
                   <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
